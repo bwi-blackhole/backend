@@ -1,30 +1,33 @@
 const express = require('express')
 const server = express()
+const helmet = require('helmet')
+const Users = require('../users/users-model.js')
 
-// server.get('/api', (req, res) => {
-// 	res.status(200).json({ message: 'Server is running!' })
-// })
+server.use(express.json())
+server.use(helmet())
 
-// GET
 server.get('/api', (req, res) => {
-	users
-		.getAll()
-		.then(users => {
-			res.status(200).json(users)
-		})
-		.catch(res.status(500).json({ error: 'could not retrieve users!' }))
+	res.status(200).json({ message: 'Server is running!' })
 })
 
+// GET
+// server.get('/', (req, res) => {
+// 	db.getAll()
+// 		.then(users => {
+// 			res.status(200).json(users)
+// 		})
+// 		.catch(res.status(500).json({ error: 'could not retrieve users!' }))
+// })
+
 // POST
-server.post('/', (req, res) => {
+server.post('/register', (req, res) => {
 	const newUser = req.body
 	if (newUser.username && newUser.password) {
-		users
-			.insert(newuser)
+		Users.insert(newUser)
 			.then(ids => {
 				res.status(201).json({ ids })
 			})
-			.catch(error => {
+			.catch(err => {
 				res.status(500).json({ error: 'unable to create new user' })
 			})
 	} else {
