@@ -11,13 +11,13 @@ server.get('/api', (req, res) => {
 })
 
 // GET
-// server.get('/', (req, res) => {
-// 	db.getAll()
-// 		.then(users => {
-// 			res.status(200).json(users)
-// 		})
-// 		.catch(res.status(500).json({ error: 'could not retrieve users!' }))
-// })
+server.get('/', (req, res) => {
+	Users.getAll()
+		.then(users => {
+			res.status(200).json(users)
+		})
+		.catch(() => res.status(500).json({ message: 'Unable to retrieve users' }))
+})
 
 // POST
 server.post('/register', (req, res) => {
