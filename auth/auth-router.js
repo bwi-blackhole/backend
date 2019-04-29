@@ -27,7 +27,7 @@ router.post('/login', (req, res) => {
 		.first()
 		.then(user => {
 			if (user && bcrypt.compareSync(password, user.password)) {
-				// create the token
+				// create the token when login successfully
 				const token = tokenService.generateToken(user)
 				res
 					.status(200)
