@@ -25,3 +25,5 @@ Used for Posting a Message
 "expirationDate": "2019-04-17 12:00:00"
 }
 
+// get message
+localhost:9393/getmessages
