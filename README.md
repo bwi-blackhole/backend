@@ -17,12 +17,11 @@ Used for register and login
 "password": "password"
 }
 
-Used for Posting a Message
+Posting a Message
 
 {
 "message": "message",
-"timeInOrbit": INTEGER,
-"expirationDate": "2019-04-17 12:00:00"
+"delete_at": "2019-05-05 12:00:00"
 }
 
 // get message
