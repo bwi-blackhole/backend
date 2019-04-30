@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const authRouter = require('../auth/auth-router.js')
 const Users = require('../users/users-model.js')
+const post = require('../auth/routes.js') // import for post message/delete/update.etc
 
 const server = express()
 
@@ -13,6 +14,9 @@ server.use(helmet())
 server.use(cors())
 
 server.use('/api/auth', authRouter)
+//server.use('/post', post)
+post(server)
+module.exports = server
 
 server.get('/', (req, res) => {
 	res.status(200).json({ message: 'Server is running!' })
