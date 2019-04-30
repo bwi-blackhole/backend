@@ -1,4 +1,6 @@
+const express = require('express')
 const knex = require('knex')
+
 const dbConfig = require('../knexfile')
 const db = knex(dbConfig.development)
 
@@ -8,7 +10,7 @@ const tokenService = require('./token-service')
 module.exports = server => {
 	server.post('/postmessage', message) // post message
 	server.get('/getmessages', messages) // get messages
-	server.get('/getmassage/:id', messagesId, restricted) // get message by id
+	server.get('/getmessage/:id', messagesId, restricted) // get message by id
 }
 
 // Post message
