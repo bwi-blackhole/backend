@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('messages', tbl => {
+	return knex.schema.createTable('posts', tbl => {
 		tbl.increments()
 		tbl.string('message').notNullable()
 
@@ -8,11 +8,8 @@ exports.up = function(knex, Promise) {
 			.notNullable()
 			.unsigned()
 			.references('id')
-			.inTable('users')
 
 		tbl.string('delete_at')
-
-		tbl.timestamps(true, true)
 	})
 }
 

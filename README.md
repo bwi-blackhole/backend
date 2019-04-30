@@ -8,21 +8,17 @@ https://www.notion.so/PT-Build-Week-Schedule-and-Daily-Milestones-7bb9cf123be140
 
 ##
 
-users: {
-id: #,
-username: "",
-password: "",
-email: "",
-firstName: "",
-lastName: ""
+Used for register and login
+
+{
+"username": "userName",
+"password": "password"
 }
 
-posts : {
-id: #,
-title: "",
-body: "",
-likes/shares/tries: #,
-created_at: ,
-updated_at,
-creator_id
+Used for Posting a Message
+
+{
+"message": "message",
+"timeInOrbit": INTEGER,
+"expirationDate": "2019-04-17 12:00:00"
 }
