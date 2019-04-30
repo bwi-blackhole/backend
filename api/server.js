@@ -19,7 +19,7 @@ server.get('/', (req, res) => {
 })
 
 // GET
-server.get('/', (req, res) => {
+server.get('/api/users', (req, res) => {
 	Users.getAll()
 		.then(users => {
 			res.status(200).json(users)
