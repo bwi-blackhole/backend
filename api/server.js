@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const authRouter = require('../auth/auth-router.js')
 const Users = require('../users/users-model.js')
-const post = require('../auth/routes.js') // import for post message/delete/update.etc
+const allOtherRoutes = require('../auth/routes.js')
 
 const server = express()
 
@@ -13,9 +13,10 @@ server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
+//post(server)
 server.use('/api/auth', authRouter)
 //server.use('/post', post)
-post(server)
+allOtherRoutes(server)
 module.exports = server
 
 server.get('/', (req, res) => {

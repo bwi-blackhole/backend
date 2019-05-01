@@ -11,6 +11,8 @@ module.exports = server => {
 	server.post('/postmessage', message) // post message
 	server.get('/getmessages', messages) // get messages
 	server.get('/getmessage/:id', messagesId, restricted) // get message by id
+	server.put('updatemessage/:id', updateMessage) // update message by id
+	server.delete('delmessage/:id', deleteMessage) // delete message by id
 }
 
 // Post message
@@ -19,14 +21,7 @@ function message(req, res) {
 	db.insert(messages)
 		.into('messages')
 		.then(ids => {
-			res
-				.status(201)
-				.json([
-					messages.message,
-					ids[0],
-					messages.expirationDate,
-					messages.numberOfDays
-				])
+			res.status(201).json([messages.message, ids[0], messages.delete_at])
 		})
 		.catch(err => res.status(500).json(err))
 }
@@ -52,6 +47,42 @@ function messagesId(req, res) {
 		})
 		.catch(error => {
 			res.status(500).json(error)
+		})
+}
+
+// Update message by Id
+function updateMessage(req, res) {
+	const updateChanges = req.body
+	const { id } = req.params
+
+	db('messages')
+		.where({ id: id })
+		.update(updateChanges)
+		.then(count => {
+			db('messages')
+				.where({ id })
+				.first()
+		})
+		.then(message => {
+			res.status(200).json(message)
+		})
+		.catch(err => {
+			res.status(500).json(err)
+		})
+}
+
+// Delete message by id
+function deleteMessage(req, res) {
+	const { id } = req.params
+
+	db('messages')
+		.where({ id })
+		.del()
+		.then(message => {
+			res.status(200).json(message)
+		})
+		.catch(err => {
+			res.status(500).json(err)
 		})
 }
 

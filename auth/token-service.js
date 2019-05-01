@@ -9,14 +9,14 @@ module.exports = {
 function generateToken(user) {
 	const payload = {
 		subject: user.id,
-		username: user.username,
+		username: user.username
 		//name: user.name,
-		roles: ['admin', 'regularUser'] //should come from database
+		//roles: ['admin', 'regularUser'] //should come from database
 		// ...otherData
 	}
 
 	const options = {
-		expiresIn: '1d'
+		expiresIn: '45m'
 	}
 	return jwt.sign(payload, secrets.jwtSecret, options)
 }
