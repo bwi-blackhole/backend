@@ -64,7 +64,7 @@ function updateMessage(req, res) {
 				.first()
 		})
 		.then(message => {
-			res.status(200).json(message)
+			res.status(200).json({ message: 'message updated' })
 		})
 		.catch(err => {
 			res.status(500).json(err)
@@ -79,7 +79,7 @@ function deleteMessage(req, res) {
 		.where({ id })
 		.del()
 		.then(message => {
-			res.status(200).json(message)
+			res.status(200).json({ message: 'message deleted' })
 		})
 		.catch(err => {
 			res.status(500).json(err)
