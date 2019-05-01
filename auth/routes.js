@@ -11,8 +11,8 @@ module.exports = server => {
 	server.post('/postmessage', message) // post message
 	server.get('/getmessages', messages) // get messages
 	server.get('/getmessage/:id', messagesId, restricted) // get message by id
-	server.put('updatemessage/:id', updateMessage) // update message by id
-	server.delete('delmessage/:id', deleteMessage) // delete message by id
+	server.put('/updatemessage/:id', updateMessage) // update message by id
+	server.delete('/delmessage/:id', deleteMessage) // delete message by id
 }
 
 // Post message
