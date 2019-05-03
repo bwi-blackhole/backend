@@ -23,15 +23,6 @@ allOtherRoutes(server)
 // })
 
 // GET
-<<<<<<< HEAD
-// server.get('/api/users', (req, res) => {
-// 	Users.getAll()
-// 		.then(users => {
-// 			res.status(200).json(users)
-// 		})
-// 		.catch(() => res.status(500).json({ message: 'Unable to retrieve users' }))
-// })
-=======
 server.get('/users', (req, res) => {
 	Users.getAll()
 		.then(users => {
@@ -39,6 +30,5 @@ server.get('/users', (req, res) => {
 		})
 		.catch(() => res.status(500).json({ message: 'Unable to retrieve users' }))
 })
->>>>>>> 273f2f9bc2353d66eb709b5230363e589d206b14
 
 module.exports = server

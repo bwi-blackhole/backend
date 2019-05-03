@@ -13,7 +13,7 @@ module.exports = server => {
 	///server.post('/register', register)
 	//server.post('/login', login)
 	server.get('/users', users) // get ALL users
-	server.get('/users/:id') // get user by Id
+	server.get('/users/:id', usersId) // get user by Id
 	server.post('/postmessage', message, authenticate) // post message
 	server.get('/getmessages', messages) // get messages
 	server.get('/getmessage/:id', messagesId) // get message by id

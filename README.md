@@ -6,9 +6,7 @@ deployed at: https://blackhole-backend.herokuapp.com/
 
 [Trello Board][https://trello.com/b/i4d8yoic/backend]
 
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-==-=-=-=-=-=-
-
-For user registration and login:
+## For user registration and login:
 
 Register new user:
 _Method Url:_`/register`
@@ -29,7 +27,6 @@ For posting a message:
 user_id: 1,
 message: "a message"
 }
---=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-
 
 ## All auth routes
 
