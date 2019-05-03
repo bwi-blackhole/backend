@@ -10,11 +10,9 @@ exports.up = function(knex, Promise) {
 		tbl.string('email', 256)
 
 		tbl.string('password', 256).notNullable()
-		tbl.string('firstName', 256)
-		tbl.string('lastName', 256)
 	})
 }
 
 exports.down = function(knex, Promise) {
-	return knex.schema.dropTableifExists('users')
+	return knex.schema.dropTableIfExists('users')
 }

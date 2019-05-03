@@ -21,7 +21,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-	let { username, password, email } = req.body
+	let { username, password } = req.body
 
 	Users.findBy({ username })
 		.first()
@@ -40,4 +40,27 @@ router.post('/login', (req, res) => {
 			res.status(500).json(error)
 		})
 })
+
+// Restricted
+function restricted(req, res, next) {
+	const { username, password } = req.headers
+
+	if (username && password) {
+		Users.findBy({ username })
+			.first()
+			.then(user => {
+				if (user && bcrypt.compareSync(password, user.password)) {
+					next()
+				} else {
+					res.status(401).json({ message: 'Invalid Credentials' })
+				}
+			})
+			.catch(error => {
+				res.status(500).json(error)
+			})
+	} else {
+		res.status(401).json({ message: 'Please provide creds.' })
+	}
+}
+
 module.exports = router
